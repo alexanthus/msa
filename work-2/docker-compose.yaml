@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+
+  user-servise:
+    container_name: user-servise
+    build:
+      context: user
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    networks:
+      - backend
+
+  server-servise:
+    container_name: server-servise
+    build:
+      context: server
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+      - backend
+
+  message-servise:
+    container_name: message-servise
+    build:
+      context: message
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    networks:
+      - backend
+
+networks:
+  backend:
